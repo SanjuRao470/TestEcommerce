@@ -1,8 +1,10 @@
 
-import Home from "./pages/Home";
+
 import { BrowserRouter,Routes,Route } from 'react-router-dom'
 import ProductDetail from "./pages/productdetail/ProductDetail";
 
+// import footer from "./components/footer/footer"
+import Home from "./pages/home/Home";
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
       </Routes>
       </BrowserRouter>
      
+      {/* <footer/> */}
+     <Home/>
     </div>
   );
 }
