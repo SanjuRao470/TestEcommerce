@@ -1,6 +1,6 @@
 import FooterFile from "../../components/footer/FooterFile"
 import HeaderFlie from "../../components/header/HeaderFile";
-import { Layout, Space, Col, Card, Row, Typography, Carousel,  Tabs} from 'antd';
+import { Layout, Space, Col, Card, Row, Typography, Carousel,Tabs} from 'antd';
  import { useState, useEffect } from 'react';
 import Photo from '../../assets/images/carousel.webp'
 import Photo1 from '../../assets/images/c1.webp'
@@ -49,7 +49,6 @@ function Home() {
         }
     }
     console.log("@@@@@@@@original", first)
-    // console.log("@@@@@@@@sorting", data)
 
     useEffect(() => {
         GetData();
@@ -107,7 +106,7 @@ function Home() {
             }}
             size={[0, 48]}
         >
-            <Layout  >
+            <Layout>
                 <HeaderFlie/>
                 <Layout >
                     <Layout style={{margin:'auto',width:'95%'}}>
@@ -262,11 +261,6 @@ function Home() {
                                         </Col>
                                     </>
                                 ))}
-
-                                {/* <Col span={24}>
-                                <Space direction="vertical">
-                                <Text type="warning"><div> <h3>Best Of Electronics</h3></div></Text></Space>
-                                     </Col> */}
                             </Row>
                             <Row gutter={{
                                 xs: 8,
