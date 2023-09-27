@@ -1,11 +1,10 @@
-import FooterFile from "../../components/footer/FooterFile"
-import HeaderFlie from "../../components/header/HeaderFile";
-import { Layout, Space, Col, Card, Row, Typography, Carousel,  Tabs} from 'antd';
- import { useState, useEffect } from 'react';
+// import {Outlet } from 'react-router-dom'
+import { Layout, Space, Col, Card, Row, Typography, Carousel, Tabs } from 'antd';
+import { useState, useEffect } from 'react';
 import Photo from '../../assets/images/carousel.webp'
 import Photo1 from '../../assets/images/c1.webp'
 import Photo2 from '../../assets/images/c2.webp'
-const {  Content } = Layout;
+const { Content } = Layout;
 const { Text } = Typography;
 
 const carouselStyle = {
@@ -13,7 +12,8 @@ const carouselStyle = {
     color: '#7665a0 ',
     lineHeight: '160px',
     textAlign: 'center',
-    backgroundColor: "#fff",
+    backgroundColor: "#f5f5f5",
+    
 };
 
 const contentStyle = {
@@ -21,12 +21,10 @@ const contentStyle = {
     // minHeight: 120,
     // lineHeight: '120px',
     color: '#fff',
-    backgroundColor: "#fff",
-
+    backgroundColor: "#f5f5f5",
 };
 
 function Home() {
-
     const [first, setFirst] = useState([])
     async function GetData() {
         try {
@@ -43,13 +41,11 @@ function Home() {
             const result = await response.json();
             console.log(result.response)
             setFirst(result)
-            // setData(first)
         } catch (err) {
             console.log("catched errors")
         }
     }
     console.log("@@@@@@@@original", first)
-    // console.log("@@@@@@@@sorting", data)
 
     useEffect(() => {
         GetData();
@@ -98,20 +94,17 @@ function Home() {
             direction="vertical"
             style={{
                 minheight: '100%',
-                position: 'fixed',
-                overflowY: 'scroll',
-                overflowX: 'hidden',
+                // position: 'fixed',
+              overflow:'auto',
                 top: 0,
                 bottom: 0,
                 width: '100%',
+                
             }}
             size={[0, 48]}
         >
-            <Layout  >
-                <HeaderFlie/>
                 <Layout >
-                    <Layout style={{margin:'auto',width:'95%'}}>
-                       
+                    <Layout style={{ margin: 'auto', width: '95%' }}>
                         <Row gutter={{
                             xs: 8,
                             sm: 16,
@@ -202,14 +195,14 @@ function Home() {
                                 md: 24,
                                 lg: 32,
                             }}>
-                            <Col span={24}>
+                                <Col span={24}>
                                     <div >
                                         <Text type="warning"><div> <h3>Best Of Electronics</h3></div></Text>
                                     </div>
                                 </Col>
                             </Row>
                             <Row gutter={[16, 16]}>
-                           
+
                                 {first.map((user) => (
                                     <>
                                         <Col className="gutter-row" span={6}>
@@ -262,11 +255,6 @@ function Home() {
                                         </Col>
                                     </>
                                 ))}
-
-                                {/* <Col span={24}>
-                                <Space direction="vertical">
-                                <Text type="warning"><div> <h3>Best Of Electronics</h3></div></Text></Space>
-                                     </Col> */}
                             </Row>
                             <Row gutter={{
                                 xs: 8,
@@ -337,8 +325,6 @@ function Home() {
                         </Content>
                     </Layout>
                 </Layout>
-                <FooterFile/>
-            </Layout>
         </Space>
     )
 }
