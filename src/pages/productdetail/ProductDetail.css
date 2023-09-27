@@ -1,0 +1,160 @@
+
+.container{
+
+    height: 70vh;
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left:50px;
+    gap:1px;
+    /* background-color: aquamarine; */
+
+}
+
+.container .leftimg{
+    margin-top: 70px;
+    width:30%;
+    margin-left: 20px;
+    /* background-color: blueviolet; */
+
+}
+
+.container .small-images {
+    display: flex;
+    flex-direction: column; /* Display small images vertically */
+    align-items: center; /* Center align small images horizontally */
+    margin-top: 10px; /* Add margin as needed */
+  }
+
+  .container .small-images .small-image{
+    cursor: pointer; /* Change cursor to pointer on hover */
+  margin: 5px 0; /* Add vertical spacing between small images */
+  border: 1px solid #ddd; /* Add a border around each small image */
+  transition: border 0.3s ease; /* Add a smooth transition effect on hover */
+  }
+
+  .container .small-images .small-image:hover {
+    border: 1px solid #7665A0; /* Change border color on hover */
+  }
+
+.container .right{
+
+    width:50%;
+    /* background-color: rosybrown; */
+
+}
+
+.container .right .righttext{
+    color: #5d5e5c;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 26px;
+    align-items: flex-start;
+    margin-top: 240px;
+    margin-bottom:8px;
+    
+}
+
+.container .right .horizontal-line {
+    width: 100%;
+    height: 1px;
+    background-color: #ccc; 
+    /* margin-top: 15px; */
+    padding:2px
+  }
+
+  .container .right .rightcontent{
+    display: flex;
+    margin-top: 15px;
+    gap:5px;
+  }
+
+  .container .right .rightcontent .rupeesicon, .price{
+    font-weight: bolder;
+  }
+
+  .container .right .rightcontent .txt{
+    color: rgb(146, 147, 145);
+    align-self: flex-end;
+    line-height: 22px;
+    padding-left: 8px;
+  }
+
+  .container .right .btn {
+    border: none;
+    padding: 15px 30px;
+    cursor: pointer;
+    color: #ffffff;
+    background-color: #7665A0 !important;
+    text-decoration: none; /* Remove the underline on button text */
+    display: inline-block; /* Make the button width fit the content */
+    /* margin: 0;  */
+    margin-top: 65px;
+    margin-left: 250px;
+    border-radius: 10px;
+  }
+  
+  .container .right .btn:focus {
+    /* outline: 2px solid #7665A0; /* Use a border that matches your button color */
+  /* outline-offset: 2px;  */
+  }
+
+  .container .right .btn .btntxt{
+    background: none;
+    color: white;
+    font-size: 20px;
+    font-weight: 400;
+    border:none;
+    outline: none;
+  }
+
+  .container .right .action-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0;
+    position: relative;
+    gap:10px;
+  }
+  
+ .container .right .action-container .line {
+    position: absolute;
+  width: 100%;
+  height: 1px;
+  background-color: #ccc;
+  top: 50%;
+  /* transform: translateY(-50%); */
+}
+  
+  
+  .container  .right .action-container .action-icons {
+    display: flex;
+    align-items: center;
+   
+  }
+  
+  .container  .right .action-container .action-icons .action-text {
+    font-size: 16px;
+    margin: 0 10px;
+    cursor: pointer;
+  }
+
+  .container .right .product-overview{
+    margin-top: 40px;
+ border: 1px dashed #ccc;
+  padding: 10px;
+  }
+
+  .container .right p del{
+
+text-decoration: line-through;
+  color: #999;
+
+  }
+  
+  
+  
+  
+  
+  

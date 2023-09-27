@@ -10,9 +10,12 @@ import {
 
 const { Footer } = Layout;
 const footerStyle = {
+    border: '1px solid rgb(224, 224, 235)',
+    marginTop:' 20px',
     textAlign: 'center',
-    color: '#fff',
+    // color: '#fff',
     backgroundColor: ' #172337',
+    // backgroundColor: ' red',
     padding: '4%',
 };
 
