@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
 import './ProductDetail.css'
+import { Link } from 'react-router-dom';
 
 const ProductDetail = () => {
     const imagesOnHover = [
@@ -64,7 +65,7 @@ const ProductDetail = () => {
 </div>
 
    <div className="btn">
-    <button className='btntxt'>Add to Basket</button>
+    <button className='btntxt'><Link to='/checkout'>Add to Basket</Link></button>
    </div>
 
    

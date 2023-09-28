@@ -14,7 +14,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home/>} /> 
         <Route path='/productdetail' element={<ProductDetail/>} />
-        <Route path='/checkout' element={<Checkout/>} />
+        {/* <Route path='/checkout' element={<Checkout/>} /> */}
           
 
 
@@ -23,6 +23,7 @@ function App() {
         <Route path='productdetail' element={<ProductDetail/>} />
           <Route path='login' element={<Login/>} /> 
             <Route path='signup' element={<Signup/>} /> 
+            <Route path='checkout' element={<Checkout/>} /> 
         {/* <Route path="*" element={<NoMatch />} /> */}
         </Route>
       </Routes>

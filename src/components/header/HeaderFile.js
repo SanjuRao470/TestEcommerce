@@ -61,20 +61,7 @@ const btnProps = {
     },
 };
 
-const headerStyle1 = {
-    textAlign: 'center',
-    // position: 'sticky',
-    top: '3em',
-    zindex: 1,
-    height: 60,
-    backgroundColor: "#fff",
-    // backgroundColor: "#F5F5F5",
-    color: "white",
-    margin: "auto",
-    width: " 95%",
-    marginTop: ' 20px',
 
-};
 
 const headerStyle = {
     textAlign: 'center',
@@ -133,7 +120,7 @@ function HeaderFlie() {
                     <Col span={24}>
                         <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly' }}>
                             <span style={{ marginLeft: '10px', fontWeight: 'bold', fontSize: '15px' }}>
-                                <Link to="/productdetail">  FlipKart</Link>
+                               FlipKart
                             </span>
                             <span style={{ marginLeft: '10px' }}>
                                 <Input
@@ -226,7 +213,7 @@ function HeaderFlie() {
                     </Col>
                 </Row>
             </Header>
-            <Header style={headerStyle1}>
+            {/* <Header style={headerStyle1}>
                 <Row gutter={{
                     xs: 8,
                     sm: 16,
@@ -517,7 +504,7 @@ function HeaderFlie() {
                         </div>
                     </Col>
                 </Row>
-            </Header>
+            </Header> */}
             <Divider style={{ border: '5px solid  #e0e0eb', margin: "auto" }} />
         </div>
     )
