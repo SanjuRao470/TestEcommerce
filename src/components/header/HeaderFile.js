@@ -1,5 +1,5 @@
 import React from 'react'
-import { Layout, Space, Col, Row, Modal, Typography, Avatar, Image, Divider, Button, Input, Tooltip, Dropdown } from 'antd';
+import { Layout, Col, Row, Modal, Avatar, Image, Divider, Button, Input, Tooltip, } from 'antd';
 import { useState } from 'react';
 import { Link } from 'react-router-dom'
 import { useAuth0 } from "@auth0/auth0-react";
@@ -61,7 +61,18 @@ const btnProps = {
     },
 };
 
+// const headerStyle1 = {
+//     textAlign: 'center',
+//     top: '3em',
+//     zindex: 1,
+//     height: 60,
+//     backgroundColor: "#fff",
+//     color: "white",
+//     margin: "auto",
+//     width: " 95%",
+//     marginTop: ' 20px',
 
+// };
 
 const headerStyle = {
     textAlign: 'center',
@@ -74,7 +85,7 @@ const headerStyle = {
     width: "100%",
     paddingLeft: 35,
     paddingRight: 35,
-    // position: "fixed",
+    position: "fixed",
     // top: 0
 
 };

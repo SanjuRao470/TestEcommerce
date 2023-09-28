@@ -1,8 +1,9 @@
-import { BrowserRouter,Routes,Route } from 'react-router-dom'
+import {Routes,Route } from 'react-router-dom'
 import  LayoutPage  from '../src/components/layout/LayoutPage';
 import Home from "./pages/home/Home";
 import Checkout from './pages/checkout/Checkout';
 import ProductDetail from "./pages/productdetail/ProductDetail";
+import ProductList from "./pages/productlist/ProductList";
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 
@@ -10,7 +11,6 @@ import Login from './pages/Login';
 function App() {
   return (
     <div>
-      <BrowserRouter>
       <Routes>
         <Route path='/' element={<Home/>} /> 
         <Route path='/productdetail' element={<ProductDetail/>} />
@@ -23,11 +23,10 @@ function App() {
         <Route path='productdetail' element={<ProductDetail/>} />
           <Route path='login' element={<Login/>} /> 
             <Route path='signup' element={<Signup/>} /> 
-            <Route path='checkout' element={<Checkout/>} /> 
+            <Route path='productlist' element={<ProductList/>} /> 
         {/* <Route path="*" element={<NoMatch />} /> */}
         </Route>
       </Routes>
-      </BrowserRouter>
     </div>
   );
 }
