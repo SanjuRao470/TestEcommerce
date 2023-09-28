@@ -1,5 +1,5 @@
 import React from 'react'
-import { Layout, Space, Col, Row, Modal, Typography, Avatar, Image, Divider, Button, Input, Tooltip, Dropdown } from 'antd';
+import { Layout, Col, Row, Modal, Avatar, Image, Divider, Button, Input, Tooltip, } from 'antd';
 import { useState } from 'react';
 import { Link } from 'react-router-dom'
 import { useAuth0 } from "@auth0/auth0-react";
@@ -61,20 +61,18 @@ const btnProps = {
     },
 };
 
-const headerStyle1 = {
-    textAlign: 'center',
-    // position: 'sticky',
-    top: '3em',
-    zindex: 1,
-    height: 60,
-    backgroundColor: "#fff",
-    // backgroundColor: "#F5F5F5",
-    color: "white",
-    margin: "auto",
-    width: " 95%",
-    marginTop: ' 20px',
+// const headerStyle1 = {
+//     textAlign: 'center',
+//     top: '3em',
+//     zindex: 1,
+//     height: 60,
+//     backgroundColor: "#fff",
+//     color: "white",
+//     margin: "auto",
+//     width: " 95%",
+//     marginTop: ' 20px',
 
-};
+// };
 
 const headerStyle = {
     textAlign: 'center',
@@ -87,7 +85,7 @@ const headerStyle = {
     width: "100%",
     paddingLeft: 35,
     paddingRight: 35,
-    // position: "fixed",
+    position: "fixed",
     // top: 0
 
 };
@@ -133,7 +131,7 @@ function HeaderFlie() {
                     <Col span={24}>
                         <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly' }}>
                             <span style={{ marginLeft: '10px', fontWeight: 'bold', fontSize: '15px' }}>
-                                <Link to="/productdetail">  FlipKart</Link>
+                               FlipKart
                             </span>
                             <span style={{ marginLeft: '10px' }}>
                                 <Input
@@ -226,7 +224,7 @@ function HeaderFlie() {
                     </Col>
                 </Row>
             </Header>
-            <Header style={headerStyle1}>
+            {/* <Header style={headerStyle1}>
                 <Row gutter={{
                     xs: 8,
                     sm: 16,
@@ -517,7 +515,7 @@ function HeaderFlie() {
                         </div>
                     </Col>
                 </Row>
-            </Header>
+            </Header> */}
             <Divider style={{ border: '5px solid  #e0e0eb', margin: "auto" }} />
         </div>
     )

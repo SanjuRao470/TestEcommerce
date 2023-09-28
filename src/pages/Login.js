@@ -22,29 +22,13 @@ function Login() {
     }}
     style={{
         height: '431px',
-        // display:'flex',
-        // flexDirection:'column',
-        // justifyContent:'center',
-        // paddingLeft:'20%',
-        // color: '#7665a0 ',
-        // lineHeight: '160px',
-        // textAlign: 'center',
         backgroundColor: "#def3f6",
         paddingTop: '2%',
         paddingRight: '5%',
       maxWidth: 600,
       margin:'auto',
-      marginTop: '2%'
-    //   border:'1px solid',
-    //   border: '1px solid',
-    //   padding: '10px',
-    //   boxShadow: '5px 10px #fff',
-    // height: 310px;
-    // background-color: rgb(222, 243, 246);
-    // max-width: 600px;
-    // padding-top: 2%;
-    // padding-right: 5%;
-    // margin: 20px auto auto;
+      marginTop: '5%'
+  
     }}
     initialValues={{
       remember: true,
