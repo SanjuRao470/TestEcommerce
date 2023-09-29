@@ -11,12 +11,8 @@ import {
 } from '@ant-design/icons';
 import { setProducts } from '../../redux/actions/productActions';
 import { Link } from 'react-router-dom';
-<<<<<<< HEAD
-const { Sider, Content } = Layout;
-=======
 import { useDispatch, useSelector } from 'react-redux';
 const {  Sider, Content } = Layout;
->>>>>>> c18790beda6eee19f1533a3d3a829d722b869aae
 const { Text } = Typography;
 
 const contentStyle = {
