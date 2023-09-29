@@ -13,7 +13,7 @@
 }
 
 .container .leftimg{
-    margin-top: 70px;
+    /* margin-top: 70px; */
     width:30%;
     margin-left: 20px;
     /* background-color: blueviolet; */
@@ -51,7 +51,7 @@
     font-weight: 400;
     line-height: 26px;
     align-items: flex-start;
-    margin-top: 240px;
+    margin-top: 100px;
     margin-bottom:8px;
     
 }

@@ -9,8 +9,14 @@ import {
     CloseOutlined,
     SearchOutlined,
 } from '@ant-design/icons';
+import { setProducts } from '../../redux/actions/productActions';
 import { Link } from 'react-router-dom';
+<<<<<<< HEAD
 const { Sider, Content } = Layout;
+=======
+import { useDispatch, useSelector } from 'react-redux';
+const {  Sider, Content } = Layout;
+>>>>>>> c18790beda6eee19f1533a3d3a829d722b869aae
 const { Text } = Typography;
 
 const contentStyle = {
@@ -169,38 +175,36 @@ const items = [
     ]),
 ];
 
- 
-    function ProductList() {
+function ProductList() {
 
-    // const [collapsed, setCollapsed] = useState(false);
+    const products = useSelector((state)=> state.allProducts.products);
+    const dispatch = useDispatch();
+    console.log("XXXXXXX",products);
     const [first, setFirst] = useState([])
     // const [data, setData] = useState([])
 
     async function GetData() {
         try {
-
-            const response = await fetch('https://fakestoreapi.com/products', {
-                method: 'GET',
-                headers: {
-                    'Origin': 'http://localhost:3000',
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer your_token_here'
-                },
-            })
-            const result = await response.json();
-            console.log(result.response)
-            setFirst(result)
-
-        } catch (err) {
-            console.log("catched errors")
-        }
+            const response = await fetch('https://fakestoreapi.com/products');
+            const data = await response.json();
+            
+      
+            // Dispatch the action after data is fetched
+            dispatch(setProducts(data));
+            setFirst(data);
+          } catch (error) {
+            console.error("Error fetching data:", error);
+          }
+        
     }
     console.log("@@@@@@@@original", first)
 
 
     useEffect(() => {
-        GetData();
+        GetData(); 
     }, [])
+
+    console.log("PRODUCTS: ", products);
 
     const FillterhandleChange = (curr) => {
         console.log("******&&&&&&&&", curr)
@@ -240,11 +244,183 @@ const items = [
         padding: '8px 0',
     };
 
+    // const renderList = products.map((product)=>{ 
+    
+    //     const {id,title,price,category,description,image} = product;
+    //     return(
+    //         <>
+    //         <Space
+    //         direction="vertical"
+    //         style={{
+    //             minheight: '100%',
+    //             // position: 'fixed',
+    //             overflowY: 'scroll',
+    //             overflowX: 'hidden',
+    //             top: 0,
+    //             bottom: 0,
+    //             width: '100%',
+    //         }}
+    //         size={[0, 48]}
+    //     >
+    //         <Layout  >
+    //         <Link to={`/product/${id}`}>
+    //             <Layout  style={{ marginTop:'6%'}} key={id} >
+                    
+    //                 <Row>
+    //                     <Col span={24}>
+    //                         {/* <Sider style={siderStyle} width={180} collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)} */}
+    //                         <Sider style={siderStyle} width={180}
+    //                         >
+    //                             <Menu
+    //                                 defaultSelectedKeys={['1']}
+    //                                 defaultOpenKeys={['sub1']}
+    //                                 mode="inline"
+    //                                 theme="light"
+    //                                 items={items}
+    //                             />
+    //                         </Sider>
+    //                     </Col>
+    //                 </Row>
+    //                 <Layout style={{ marginTop:'0%'}}>
+    //                     <Row>
+    //                         <Col span={24}>
+    //                             <div style={{ backgroundColor: 'white', padding: '10px' }}><div style={{ color: '#1a1a1a', fontSize: "15px", fontWeight: 'bold' }}>Showing 1 – 40 of 15,061 results for "kurtas kurtis"</div>
+    //                                 <Tabs
+    //                                     defaultActiveKey="1"
+    //                                     items={[
+    //                                         {
+    //                                             label: (
+    //                                                 <span value={category} onClick={() => FillterhandleChange({category})}>
+    //                                                     Sortby
+    //                                                 </span>
+    //                                             ),
+    //                                             key: '1',
 
-    // const handlePageChange = (page) => {
-    //     onChange(page);
-    //   };
-    //   const total = 20;
+    //                                         },
+    //                                         {
+    //                                             label: (
+    //                                                 <span value={category} onClick={() => Fillterhandle({category})}>
+    //                                                     Relevance
+    //                                                 </span>
+    //                                             ),
+    //                                             key: '2',
+    //                                         },
+    //                                         {
+    //                                             label: (
+    //                                                 <span value={category} onClick={() => FillterPopularity({category})}>
+    //                                                     papularity
+    //                                                 </span>
+    //                                             ),
+    //                                             key: '3',
+    //                                         },
+    //                                         {
+    //                                             label: (
+    //                                                 <span value={category} onClick={() => FillterPopularity("jewelery")} >
+    //                                                     Price--Low to High
+    //                                                 </span>
+    //                                             ),
+    //                                             key: '4',
+    //                                         },
+    //                                         {
+    //                                             label: (
+    //                                                 <span onClick={() => SortPrice({price})}>
+    //                                                     Price--High to Low
+    //                                                 </span>
+    //                                             ),
+    //                                             key: '5',
+    //                                         },
+    //                                         {
+    //                                             label: (
+    //                                                 <span value="electronics" onClick={() => FillterNewest("electronics")}>
+    //                                                     Newest First
+    //                                                 </span>
+    //                                             ),
+    //                                             key: '6',
+    //                                         },
+    //                                     ]}
+    //                                 />
+    //                             </div>
+    //                         </Col>
+    //                     </Row>
+    //                     < Content style={contentStyle} >
+    //                         <Row gutter={[16, 16]}>
+    //                             {first.map((user) => (
+    //                                 <>
+    //                                     <Col className="gutter-row" span={6}>
+    //                                         <div>{user.price}</div>
+    //                                         <Link  to="/productdetail">
+    //                                         <div style={style}><Card style={{ height: '100%' }}
+    //                                             hoverable
+    //                                             cover={<img src={Photo1} alt="avatar" />}>
+    //                                             <Space direction="vertical">
+    //                                                 <Text type="danger"><div>{user.id}</div></Text>
+    //                                                 <Text strong type="secondary"><div>{user.title}</div></Text>
+    //                                                 <Text strong><div>{user.category}</div></Text>
+    //                                                 <Text type="warning"><div>Hot Deal</div></Text>
+    //                                                 <div><Text strong><div>{user.price}</div></Text><Text delete type="secondary">1,999</Text><Text type="success">55% off</Text></div>
+    //                                                 <div><Text strong type="secondary">Size:</Text> <Text strong > S, M, XL, XXL</Text></div>
+    //                                             </Space>
+    //                                         </Card>
+    //                                         </div></Link>
+    //                                     </Col>
+    //                                     <Col className="gutter-row" span={6}>
+    //                                         <div style={style}><Card style={{ height: '100%' }}
+    //                                             hoverable
+    //                                             cover={<img src={Photo2} alt="avatar" />}>
+    //                                             <Space direction="vertical">
+    //                                                 <Text type="danger"><div>{user.id}</div></Text>
+    //                                                 <Text strong type="secondary"><div>{user.title}</div></Text>
+    //                                                 <Text strong><div> {user.category}</div></Text>
+    //                                                 <Text type="warning"><div>Hot Deal</div></Text>
+    //                                                 <div><Text strong><div>{user.price}</div></Text><Text delete type="secondary">2,320</Text><Text type="success">65% off</Text></div>
+    //                                                 <div><Text strong type="secondary">Size:</Text><Text strong > S, M, XL, XXL</Text></div>
+    //                                             </Space>
+    //                                         </Card></div>
+    //                                     </Col>
+    //                                     <Col className="gutter-row" span={6}>
+    //                                         <div style={style}><Card style={{ height: '100%' }}
+    //                                             hoverable
+    //                                             cover={<img src={Photo2} alt="avatar" />}>
+    //                                             <Space direction="vertical">
+    //                                                 <Text type="danger"><div>{user.id}</div></Text>
+    //                                                 <Text strong type="secondary"><div>{user.title}</div></Text>
+    //                                                 <Text strong><div> {user.category}</div></Text>
+    //                                                 <Text type="warning"><div>Hot Deal</div></Text>
+    //                                                 <div><Text strong><div>{user.price}</div></Text> <Text delete type="secondary">1,520</Text><Text type="success">85% off</Text></div>
+    //                                                 <div><Text strong type="secondary">Size:</Text> <Text strong > S, M, XL, XXL</Text></div>
+    //                                             </Space>
+    //                                         </Card></div>
+    //                                     </Col>
+    //                                     <Col className="gutter-row" span={6}>
+    //                                         <div style={style}><Card style={{ height: '100%' }}
+    //                                             hoverable
+    //                                             cover={<img src={Photo1} alt="avatar" />}>
+    //                                             <Space direction="vertical">
+    //                                                 <Text type="danger"><div>{user.id}</div></Text>
+    //                                                 <Text strong type="secondary"><div>{user.title}</div></Text>
+    //                                                 <Text strong><div> {user.category}</div></Text>
+    //                                                 <Text type="warning"><div>Hot Deal</div></Text>
+    //                                                 <div><Text strong><div>{user.price}</div></Text> <Text delete type="secondary">2,150</Text><Text type="success">75% off</Text></div>
+    //                                                 <div><Text strong type="secondary">Size:</Text> <Text strong > S, M, XL, XXL</Text></div>
+    //                                             </Space>
+    //                                         </Card></div>
+    //                                     </Col>
+    //                                 </>
+    //                             ))}
+    //                         </Row>
+    //                     </Content>
+    //                 </Layout>
+                
+    //             </Layout>
+    //             </Link>
+    //         </Layout>
+    //     </Space>
+    //         </>
+
+    //     )
+
+
+    //     })
 
     return (
         
@@ -285,15 +461,15 @@ const items = [
                                     <Tabs
                                         defaultActiveKey="1"
                                         items={[
-                                            {
-                                                label: (
-                                                    <span value="men's clothing" onClick={() => FillterhandleChange("men's clothing")}>
-                                                        Sortby
-                                                    </span>
-                                                ),
-                                                key: '1',
+                                            // {
+                                            //     label: (
+                                            //         <span value="men's clothing" onClick={() => FillterhandleChange("men's clothing")}>
+                                            //             Sortby
+                                            //         </span>
+                                            //     ),
+                                            //     key: '1',
 
-                                            },
+                                            // },
                                             {
                                                 label: (
                                                     <span value="women's clothing" onClick={() => Fillterhandle("women's clothing")}>
@@ -341,25 +517,26 @@ const items = [
                         </Row>
                         < Content style={contentStyle} >
                             <Row gutter={[16, 16]}>
-
-                                {first.map((user) => (
+                                {products.map((product) => (
                                     <>
-                                        <Col className="gutter-row" span={6}>
-                                            <div>{user.price}</div>
-                                            <Link to="/productdetail">
-                                                <div style={style}><Card style={{ height: '100%' }}
-                                                    hoverable
-                                                    cover={<img src={Photo1} alt="avatar" />}>
-                                                    <Space direction="vertical">
-                                                        <Text type="danger"><div>{user.id}</div></Text>
-                                                        <Text strong type="secondary"><div>{user.title}</div></Text>
-                                                        <Text strong><div>{user.category}</div></Text>
-                                                        <Text type="warning"><div>Hot Deal</div></Text>
-                                                        <div><Text strong><div>{user.price}</div></Text><Text delete type="secondary">1,999</Text><Text type="success">55% off</Text></div>
-                                                        <div><Text strong type="secondary">Size:</Text> <Text strong > S, M, XL, XXL</Text></div>
-                                                    </Space>
-                                                </Card>
-                                                </div>
+                                        <Col className="gutter-row" span={6} key={product.id}>
+                                        <div>{product.price}</div>
+                                        <Link  to={`/product/${product.id}`}>
+                                         
+                                           
+                                            <div style={style}><Card style={{ height: '100%' }}
+                                                hoverable
+                                                cover={<img src={Photo1} alt="avatar" />}>
+                                                <Space direction="vertical">
+                                                    <Text type="danger"><div>{product.id}</div></Text>
+                                                    <Text strong type="secondary"><div>{product.title}</div></Text>
+                                                    <Text strong><div>{product.category}</div></Text>
+                                                    <Text type="warning"><div>Hot Deal</div></Text>
+                                                    <div><Text strong><div>{product.price}</div></Text><Text delete type="secondary">1,999</Text><Text type="success">55% off</Text></div>
+                                                    <div><Text strong type="secondary">Size:</Text> <Text strong > S, M, XL, XXL</Text></div>
+                                                </Space>
+                                            </Card>
+                                            </div>
                                             </Link>
                                         </Col>
 
@@ -368,11 +545,11 @@ const items = [
                                                 hoverable
                                                 cover={<img src={Photo2} alt="avatar" />}>
                                                 <Space direction="vertical">
-                                                    <Text type="danger"><div>{user.id}</div></Text>
-                                                    <Text strong type="secondary"><div>{user.title}</div></Text>
-                                                    <Text strong><div> {user.category}</div></Text>
+                                                    <Text type="danger"><div>{product.id}</div></Text>
+                                                    <Text strong type="secondary"><div>{product.title}</div></Text>
+                                                    <Text strong><div> {product.category}</div></Text>
                                                     <Text type="warning"><div>Hot Deal</div></Text>
-                                                    <div><Text strong><div>{user.price}</div></Text><Text delete type="secondary">2,320</Text><Text type="success">65% off</Text></div>
+                                                    <div><Text strong><div>{product.price}</div></Text><Text delete type="secondary">2,320</Text><Text type="success">65% off</Text></div>
                                                     <div><Text strong type="secondary">Size:</Text><Text strong > S, M, XL, XXL</Text></div>
                                                 </Space>
                                             </Card></div>
@@ -382,11 +559,11 @@ const items = [
                                                 hoverable
                                                 cover={<img src={Photo2} alt="avatar" />}>
                                                 <Space direction="vertical">
-                                                    <Text type="danger"><div>{user.id}</div></Text>
-                                                    <Text strong type="secondary"><div>{user.title}</div></Text>
-                                                    <Text strong><div> {user.category}</div></Text>
+                                                    <Text type="danger"><div>{product.id}</div></Text>
+                                                    <Text strong type="secondary"><div>{product.title}</div></Text>
+                                                    <Text strong><div> {product.category}</div></Text>
                                                     <Text type="warning"><div>Hot Deal</div></Text>
-                                                    <div><Text strong><div>{user.price}</div></Text> <Text delete type="secondary">1,520</Text><Text type="success">85% off</Text></div>
+                                                    <div><Text strong><div>{product.price}</div></Text> <Text delete type="secondary">1,520</Text><Text type="success">85% off</Text></div>
                                                     <div><Text strong type="secondary">Size:</Text> <Text strong > S, M, XL, XXL</Text></div>
                                                 </Space>
                                             </Card></div>
@@ -396,11 +573,11 @@ const items = [
                                                 hoverable
                                                 cover={<img src={Photo1} alt="avatar" />}>
                                                 <Space direction="vertical">
-                                                    <Text type="danger"><div>{user.id}</div></Text>
-                                                    <Text strong type="secondary"><div>{user.title}</div></Text>
-                                                    <Text strong><div> {user.category}</div></Text>
+                                                    <Text type="danger"><div>{product.id}</div></Text>
+                                                    <Text strong type="secondary"><div>{product.title}</div></Text>
+                                                    <Text strong><div> {product.category}</div></Text>
                                                     <Text type="warning"><div>Hot Deal</div></Text>
-                                                    <div><Text strong><div>{user.price}</div></Text> <Text delete type="secondary">2,150</Text><Text type="success">75% off</Text></div>
+                                                    <div><Text strong><div>{product.price}</div></Text> <Text delete type="secondary">2,150</Text><Text type="success">75% off</Text></div>
                                                     <div><Text strong type="secondary">Size:</Text> <Text strong > S, M, XL, XXL</Text></div>
                                                 </Space>
                                             </Card></div>
@@ -421,7 +598,9 @@ const items = [
       /> */}
             
         </Space>
-
+    
+       
+        
     )
 }
 export default ProductList;
