@@ -1,15 +1,16 @@
 
-import { Layout, Space, Col, Card, Row, Typography, Menu, Checkbox, Progress,  Divider, Tag, Button, Tabs } from 'antd';
+import { Layout, Space, Col, Card, Row, Typography, Menu, Checkbox, Progress, Divider, Tag, Button, Tabs, Pagination } from 'antd';
 import { useState, useEffect } from 'react';
+
 import Photo1 from '../../assets/images/c1.webp'
 import Photo2 from '../../assets/images/c2.webp'
 import {
     UpOutlined,
     CloseOutlined,
-    SearchOutlined, 
+    SearchOutlined,
 } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
-const {  Sider, Content } = Layout;
+const { Sider, Content } = Layout;
 const { Text } = Typography;
 
 const contentStyle = {
@@ -168,15 +169,16 @@ const items = [
     ]),
 ];
 
-function ProductList() {
+ 
+    function ProductList() {
+
     // const [collapsed, setCollapsed] = useState(false);
     const [first, setFirst] = useState([])
     // const [data, setData] = useState([])
-   
+
     async function GetData() {
         try {
-            // const response = await fetch("https://jsonplaceholder.typicode.com/photos")
-            //const response = await fetch("https://fakestoreapi.com/products")
+
             const response = await fetch('https://fakestoreapi.com/products', {
                 method: 'GET',
                 headers: {
@@ -188,13 +190,13 @@ function ProductList() {
             const result = await response.json();
             console.log(result.response)
             setFirst(result)
-            // setData(first)
+
         } catch (err) {
             console.log("catched errors")
         }
     }
     console.log("@@@@@@@@original", first)
-    // console.log("@@@@@@@@sorting", data)
+
 
     useEffect(() => {
         GetData();
@@ -206,7 +208,8 @@ function ProductList() {
         console.log("OOOOO menS clothe", data)
         // setMenclothe(data)
         setFirst(data)
-        console.log("@@@@@@@@@filtered", first)
+        console.log("@@@@@@@@@filtered", data)
+
     }
     const Fillterhandle = (e) => {
         console.log("******&&&&&&&&", e)
@@ -237,7 +240,14 @@ function ProductList() {
         padding: '8px 0',
     };
 
+
+    // const handlePageChange = (page) => {
+    //     onChange(page);
+    //   };
+    //   const total = 20;
+
     return (
+        
         <Space
             direction="vertical"
             style={{
@@ -252,7 +262,7 @@ function ProductList() {
             size={[0, 48]}
         >
             <Layout  >
-                <Layout  style={{ marginTop:'6%'}} >
+                <Layout style={{ marginTop: '6%' }} >
                     <Row>
                         <Col span={24}>
                             {/* <Sider style={siderStyle} width={180} collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)} */}
@@ -268,7 +278,7 @@ function ProductList() {
                             </Sider>
                         </Col>
                     </Row>
-                    <Layout style={{ marginTop:'0%'}}>
+                    <Layout style={{ marginTop: '0%' }}>
                         <Row>
                             <Col span={24}>
                                 <div style={{ backgroundColor: 'white', padding: '10px' }}><div style={{ color: '#1a1a1a', fontSize: "15px", fontWeight: 'bold' }}>Showing 1 – 40 of 15,061 results for "kurtas kurtis"</div>
@@ -331,26 +341,29 @@ function ProductList() {
                         </Row>
                         < Content style={contentStyle} >
                             <Row gutter={[16, 16]}>
+
                                 {first.map((user) => (
                                     <>
                                         <Col className="gutter-row" span={6}>
                                             <div>{user.price}</div>
-                                            <Link  to="/productdetail">
-                                            <div style={style}><Card style={{ height: '100%' }}
-                                                hoverable
-                                                cover={<img src={Photo1} alt="avatar" />}>
-                                                <Space direction="vertical">
-                                                    <Text type="danger"><div>{user.id}</div></Text>
-                                                    <Text strong type="secondary"><div>{user.title}</div></Text>
-                                                    <Text strong><div>{user.category}</div></Text>
-                                                    <Text type="warning"><div>Hot Deal</div></Text>
-                                                    <div><Text strong><div>{user.price}</div></Text><Text delete type="secondary">1,999</Text><Text type="success">55% off</Text></div>
-                                                    <div><Text strong type="secondary">Size:</Text> <Text strong > S, M, XL, XXL</Text></div>
-                                                </Space>
-                                            </Card>
-                                            </div></Link>
+                                            <Link to="/productdetail">
+                                                <div style={style}><Card style={{ height: '100%' }}
+                                                    hoverable
+                                                    cover={<img src={Photo1} alt="avatar" />}>
+                                                    <Space direction="vertical">
+                                                        <Text type="danger"><div>{user.id}</div></Text>
+                                                        <Text strong type="secondary"><div>{user.title}</div></Text>
+                                                        <Text strong><div>{user.category}</div></Text>
+                                                        <Text type="warning"><div>Hot Deal</div></Text>
+                                                        <div><Text strong><div>{user.price}</div></Text><Text delete type="secondary">1,999</Text><Text type="success">55% off</Text></div>
+                                                        <div><Text strong type="secondary">Size:</Text> <Text strong > S, M, XL, XXL</Text></div>
+                                                    </Space>
+                                                </Card>
+                                                </div>
+                                            </Link>
                                         </Col>
-                                        <Col className="gutter-row" span={6}>
+
+                                        {/* <Col className="gutter-row" span={6}>
                                             <div style={style}><Card style={{ height: '100%' }}
                                                 hoverable
                                                 cover={<img src={Photo2} alt="avatar" />}>
@@ -363,8 +376,8 @@ function ProductList() {
                                                     <div><Text strong type="secondary">Size:</Text><Text strong > S, M, XL, XXL</Text></div>
                                                 </Space>
                                             </Card></div>
-                                        </Col>
-                                        <Col className="gutter-row" span={6}>
+                                        </Col> */}
+                                        {/* <Col className="gutter-row" span={6}>
                                             <div style={style}><Card style={{ height: '100%' }}
                                                 hoverable
                                                 cover={<img src={Photo2} alt="avatar" />}>
@@ -391,7 +404,7 @@ function ProductList() {
                                                     <div><Text strong type="secondary">Size:</Text> <Text strong > S, M, XL, XXL</Text></div>
                                                 </Space>
                                             </Card></div>
-                                        </Col>
+                                        </Col> */}
                                     </>
                                 ))}
                             </Row>
@@ -399,7 +412,17 @@ function ProductList() {
                     </Layout>
                 </Layout>
             </Layout>
+            {/* <Pagination onChange={onChange} total={20} /> */}
+            {/* <Pagination
+        onChange={handlePageChange}
+        total={total}
+        defaultPageSize={4} 
+        showSizeChanger={false} 
+      /> */}
+            
         </Space>
+
     )
 }
 export default ProductList;
+
