@@ -12,13 +12,9 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route path='/' element={<Home/>} /> 
-        <Route path='/productdetail' element={<ProductDetail/>} />
-        {/* <Route path='/checkout' element={<Checkout/>} /> */}
-          
-
-
       <Route path="/" element={<LayoutPage />}>
+        <Route path='/product/:productId' element={<ProductDetail/>} />
+        <Route path='/checkout' element={<Checkout/>} />
         <Route index element={<Home/>} />
         <Route path='productdetail' element={<ProductDetail/>} />
           <Route path='login' element={<Login/>} /> 
