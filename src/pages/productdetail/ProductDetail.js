@@ -1,19 +1,21 @@
 import React,{useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import './ProductDetail.css'
-import { Link } from 'react-router-dom';
 // import {RadiusUprightOutlined} from '@ant-design/icons';
 // import { NotificationPlacement } from 'antd/es/notification/interface';
 import Notification from '../../components/notification/Notification';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectedProducts } from '../../redux/actions/productActions';
+import { addToCart } from '../../redux/actions/productActions';
 import axios from 'axios';
 
 const ProductDetail = () => {
 
 
    const product = useSelector((state) => state.product);
+   const cartProducts = useSelector((state) => state.product);
    console.log("SELECTED PRODUCT", product);
+   console.log("CART PRODUCTS1", cartProducts);
 
   const {productId} = useParams();
   console.log("PID",productId);
@@ -23,7 +25,11 @@ const ProductDetail = () => {
   const [showNotification, setShowNotification] = useState(false);
 
   const handleAddToBasketClick = () => {
-    // Logic to add item to basket goes here
+
+    console.log("Adding to cart:", product); // Check if product data is correct
+   
+  dispatch(addToCart(product));
+ 
 
     // Show the notification
     setShowNotification(true);
@@ -32,8 +38,7 @@ const ProductDetail = () => {
     setTimeout(() => {
       setShowNotification(false);
       window.location.href = '/checkout';
-      
-    }, 3000);
+    }, 2000);
   };
 
   

@@ -1,12 +1,21 @@
 import React from 'react';
 import './Checkout.css';
 import {MinusCircleOutlined,PlusCircleOutlined} from '@ant-design/icons';
+import { useDispatch, useSelector } from 'react-redux';
+
+
 function Checkout() {
+
+    const cartProducts = useSelector((state) => state.cartProducts.products);
+   console.log("Products Added In Cart", cartProducts);
+
+
+
   return (
-    <>
+    <>Your Shopping Basket
     <div className="Wrapper">
       <div className="Title">
-        <h2>Your Bag</h2>
+        <h2>Your Shopping Basket</h2>
         {/* Display order items and prices here */}
       </div>
       <div className="Top">
@@ -24,6 +33,7 @@ function Checkout() {
       
       </div>
       <div className="Bottom">
+       { cartProducts && cartProducts.map((product, index) => (
         <div className="productInfo">
             <div className="product">
                 <img src='chairs.jpg' alt= "No Image" width='20%' height='20%' />
@@ -106,6 +116,7 @@ function Checkout() {
                 </div>
             </div>
         </div>
+          ))}
         <div className="summary">
             <div className="summaryTitle" style={{fontSize:'larger'}}>
              ORDER SUMMARY 

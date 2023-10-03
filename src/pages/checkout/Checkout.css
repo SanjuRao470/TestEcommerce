@@ -7,10 +7,26 @@
     /* text-align: center; */
 }
 
-.Wrapper .Title{
+.Wrapper .Title {
+    text-align: left;
+    font-size: 24px; /* Adjust the font size as needed */
+    color: #333; /* Text color */
+    margin-bottom: 10px; /* Spacing below the text */
+  }
+  
+  .Wrapper .Title::after {
+    content: '';
+    display: block;
+    border-bottom: 2px solid #ccc; /* Light horizontal line */
+    margin-top: 5px; /* Spacing above the line */
+  }
+  
+   
+
+/* .Wrapper .Title{
     font-size: 300;
     text-align: center;
-}
+} */
   
 .Wrapper .Top{
     display: flex;
@@ -22,17 +38,16 @@
 
 .Wrapper .Top .TopButton{
 
-    font-weight:600;
-    /* padding: 10px; */
+    font-weight:400;
     border: none;
-    padding: 15px;
+    padding: 10px;
     cursor: pointer;
     color: #ffffff;
     background-color: #7665A0 !important;
     text-decoration: none; /* Remove the underline on button text */
-    /* margin-top: 65px;
-    margin-left: 250px; */
-    border-radius: 10px;
+     margin-top: 20px;
+     border-radius: 10px;
+       
 
 }
 
@@ -192,7 +207,7 @@ hr{
 .Wrapper .Bottom .summary button{
 
     width:60%;
-    padding:10px;
+    padding:18px;
     cursor: pointer;
     color: #ffffff;
     background-color: #7665A0;
@@ -200,6 +215,7 @@ hr{
     border-radius: 10px;
     font-weight: 600;
     margin-left: 55px;
+    font-size: 15px;
 
 
 }

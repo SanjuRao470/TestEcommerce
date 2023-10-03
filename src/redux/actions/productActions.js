@@ -13,3 +13,10 @@ export const selectedProducts = (product)=>{
         payload: product
     };
 }
+
+export const addToCart = (products) => {
+    return {
+      type: ActionTypes.CART_PRODUCTS,
+      payload: products
+    };
+  }
