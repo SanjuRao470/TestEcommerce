@@ -5,11 +5,11 @@ const nodemailer = require("nodemailer");
 
 class userController {
   static userSignup = async (req, res) => {
-    const { name, email, password, confirmPassword, tc } = req.body;
+    const { name, email, password} = req.body;
 
     try {
       // Validate inputs
-      if (!name || !email || !password || !confirmPassword || !tc) {
+      if (!name || !email || !password  ) {
         return res.status(400).json({
           status: "failed",
           message: "All fields are required",
@@ -27,12 +27,12 @@ class userController {
       }
 
       // Ensure password and confirmPassword match
-      if (password !== confirmPassword) {
-        return res.status(400).json({
-          status: "failed",
-          message: "Passwords do not match",
-        });
-      }
+      // if (password !== confirmPassword) {
+      //   return res.status(400).json({
+      //     status: "failed",
+      //     message: "Passwords do not match",
+      //   });
+      // }
 
       // Hash the password
       const salt = await bcrypt.genSalt(10);
@@ -43,11 +43,13 @@ class userController {
         name: name,
         email: email,
         password: hashPassword, // Store the hashed password
-        tc: tc,
+        // tc: tc,
       });
 
+      
       // Save the user to the database
       await newUser.save();
+
 
       // Generate a JWT token
       const savedUser = await userModel.findOne({ email });
@@ -62,11 +64,15 @@ class userController {
         message: "Signup successful",
         token: token,
       });
-    } catch (error) {
-      console.error(error);
+    }
+
+    catch (error) {
+      // console.error("Database error:", error);
+      // Return an appropriate error response
       return res.status(500).json({
         status: "error",
-        message: "An error occurred during registration",
+        message: "An error occurred while saving the user to the database",
+        error: error.message, // Include the database error message
       });
     }
   };

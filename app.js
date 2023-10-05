@@ -17,7 +17,7 @@ function initiliazer() {
 }
 initiliazer();
 function corsConfig() {
-  app.use(cors());
+  app.use(cors({ origin: '*' }));
 }
 function parseConfig() {
   app.use(express.json());

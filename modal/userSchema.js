@@ -16,10 +16,7 @@ const userSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
-  tc: {
-    type: Boolean,
-    required: true,
-  },
+  
 });
 
 const userModel = mongoose.model("mycollection", userSchema);  
