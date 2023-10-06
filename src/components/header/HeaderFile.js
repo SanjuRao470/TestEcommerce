@@ -1,7 +1,8 @@
 import React from 'react'
-import { Layout, Col, Row, Modal, Avatar, Image, Divider, Button, Input, Tooltip, } from 'antd';
+import { Layout, Col, Row, Modal, Avatar, Image, Divider, Button, Input, Tooltip, Badge, } from 'antd';
 import { useState } from 'react';
 import { Link } from 'react-router-dom'
+import '../header/header.css'
 import { useAuth0 } from "@auth0/auth0-react";
 import {
     GiftOutlined, DownOutlined, LogoutOutlined, ShoppingCartOutlined, ZoomInOutlined,
@@ -80,7 +81,7 @@ const headerStyle = {
     top: 0,
     zIndex: 1,
     height: 60,
-    backgroundColor: "#005ce6",
+    backgroundColor: "#DAC0A3",
     color: "white",
     width: "100%",
     paddingLeft: 35,
@@ -157,14 +158,14 @@ function HeaderFlie() {
                             </span>
                             <span style={{ marginLeft: '10px', fontWeight: 'bold', fontSize: '15px' }}>
                                 <Tooltip placement="bottom" title={user} >
-                                    Become a Seller
-                                    <DownOutlined />
+                                    Become a Seller   
+                                          <DownOutlined />
                                 </Tooltip>
                             </span>
-                            <span style={{ marginLeft: '10px', fontWeight: 'bold', fontSize: '15px' }} >
-                                <span onClick={showModal}>
-                                    <Avatar size="small" style={{ backgroundColor: '#87d068' }} icon={<UserOutlined />} />Profile</span>
-                            </span>
+                            {/* <span style={{ marginLeft: '10px', fontWeight: 'bold', fontSize: '15px' }} > */}
+                                <span onClick={showModal} style={{ marginLeft: '10px', fontWeight: 'bold', fontSize: '15px' }}>
+                                    <Avatar size="small" style={{ backgroundColor: '#001524' }} icon={<UserOutlined />} />   Profile</span>
+                            {/* </span> */}
                             <Modal style={{ backgroundColor: '#002766' }} open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
                                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', fontWeight: 'bold', fontSize: '25px', marginBottom: '10px', backgroundColor: '#002766', color: 'white' }}>User Page</div>
                                 <Row style={{ backgroundColor: ' #002766', border: '10px solid WHITE', padding: '15px', borderRadius: '30px' }}>
@@ -217,8 +218,9 @@ function HeaderFlie() {
                                     </Col>
                                 </Row>
                             </Modal>
-                            <span style={{ marginLeft: '10px', fontWeight: 'bold', fontSize: '15px' }}>
-                                <ShoppingCartOutlined /> Cart
+                            <span style={{ marginLeft: '10px', fontWeight: 'bold', fontSize: '15px', }}>
+                            <Badge size="default" count={5}>
+                            <Avatar size="small" style={{ backgroundColor: '#001524' }} icon={<ShoppingCartOutlined />} /></Badge>  Cart
                             </span>
                         </div>
                     </Col>

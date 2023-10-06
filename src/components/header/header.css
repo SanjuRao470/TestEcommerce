@@ -1,0 +1,15 @@
+
+:where(.css-dev-only-do-not-override-1vr7spz).ant-badge .ant-badge-count {
+    z-index: auto;
+    min-width: 13px;
+    height: 11px;
+    color: #ffffff;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 11px;
+    white-space: nowrap;
+    text-align: center;
+    background: #ff4d4f;
+    border-radius: 10px;
+    box-shadow: 0 0 0 1px #ffffff;
+    transition: background 0.2s;}

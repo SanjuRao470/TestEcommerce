@@ -6,6 +6,7 @@ import ProductDetail from "./pages/productdetail/ProductDetail";
 import ProductList from "./pages/productlist/ProductList";
 import Signup from './pages/Signup';
 import Login from './pages/Login';
+// import MyProfile from './pages/MyProfile';
 
 
 function App() {
@@ -20,6 +21,8 @@ function App() {
           <Route path='login' element={<Login/>} /> 
             <Route path='signup' element={<Signup/>} /> 
             <Route path='productlist' element={<ProductList/>} /> 
+            {/* <Route path='myprofile' element={<MyProfile/>} />  */}
+            
         {/* <Route path="*" element={<NoMatch />} /> */}
         </Route>
       </Routes>

@@ -5,6 +5,7 @@ import Photo from '../../assets/images/carousel.webp'
 import Photo1 from '../../assets/images/c1.webp'
 import Photo2 from '../../assets/images/c2.webp'
 import { Link } from 'react-router-dom';
+import Meta from 'antd/es/card/Meta';
 const { Content } = Layout;
 const { Text } = Typography;
 
@@ -13,8 +14,8 @@ const carouselStyle = {
     color: '#7665a0 ',
     lineHeight: '160px',
     textAlign: 'center',
-    backgroundColor: "#f5f5f5",
-
+    // backgroundColor: "#f5f5f5",
+    // width:"100 rem"
 };
 
 const contentStyle = {
@@ -25,13 +26,16 @@ const contentStyle = {
     backgroundColor: "#f5f5f5",
 };
 
+
+
+
 function Home() {
-       // const response = await fetch("https://jsonplaceholder.typicode.com/photos")
-            //const response = await fetch("https://fakestoreapi.com/products")
+    // const response = await fetch("https://jsonplaceholder.typicode.com/photos")
+    //const response = await fetch("https://fakestoreapi.com/products")
     const [first, setFirst] = useState([])
     async function GetData() {
         try {
-         
+
             const response = await fetch('https://fakestoreapi.com/products', {
                 method: 'GET',
                 headers: {
@@ -93,231 +97,351 @@ function Home() {
 
     return (
 
-            <Layout >
-                <Layout style={{ margin: 'auto', width: '95%' }}>
+        <Layout >
+            <Layout style={{ margin: 'auto', width: '95%' }}>
+                <Row gutter={{
+                    xs: 8,
+                    sm: 16,
+                    md: 24,
+                    lg: 32,
+                }}>
+                    <Col span={24} style={{ marginTop: '6%' }}>
+                        <Carousel autoplay>
+                            <div>
+                                <h3 style={carouselStyle}><img src={Photo} alt="avatar" /></h3>
+                            </div>
+                            <div>
+                                <h3 style={carouselStyle}><img src={Photo1} alt="avatar" /></h3>
+                            </div>
+                            <div>
+                                <h3 style={carouselStyle}><img src={Photo2} alt="avatar" /></h3>
+                            </div>
+                            <div>
+                                <h3 style={carouselStyle}><img src={Photo} alt="avatar" /></h3>
+                            </div>
+                        </Carousel>
+                    </Col>
+                </Row>
+                < Content style={contentStyle} >
                     <Row gutter={{
                         xs: 8,
                         sm: 16,
                         md: 24,
                         lg: 32,
-                    }}>
-                        <Col span={24} style={{ marginTop: '6%' }}>
+                    }} style={{ backgroundColor: '#F5F5DC', height: '405px', margin: 'auto', marginTop: '5%' }}  >
+                        <Col span={24}>
+                            <div >
+                                <Text type="warning"><div> <h3>Best Of Electronics</h3></div></Text>
+                            </div>
+                        </Col>
+                        <Col span={24} >
                             <Carousel autoplay>
-                                <div>
-                                    <h3 style={carouselStyle}><img src={Photo} alt="avatar" /></h3>
-                                </div>
-                                <div>
-                                    <h3 style={carouselStyle}><img src={Photo1} alt="avatar" /></h3>
-                                </div>
-                                <div>
-                                    <h3 style={carouselStyle}><img src={Photo2} alt="avatar" /></h3>
-                                </div>
-                                <div>
-                                    <h3 style={carouselStyle}><img src={Photo} alt="avatar" /></h3>
-                                </div>
+                                {first.slice(0, 12).map((user) => (
+                                    <>
+                                        <div>
+                                            <h3 style={carouselStyle}>
+                                                <Row gutter={16} >
+                                                    <Link to={`/productlist`}>
+                                                        <Col span={6} >
+                                                            <Card hoverable
+                                                                style={{ width: 300 }}
+                                                                cover={<img src={user.image} alt="avatar" style={{ height: '180px' }} />}>
+                                                                <Meta title={user.category} description={user.price} />
+                                                            </Card>
+                                                        </Col>
+                                                    </Link>
+                                                    <Link to={`/productlist`}>
+                                                        <Col span={6}>
+                                                            <Card hoverable
+                                                                style={{ width: 300 }}
+                                                                cover={<img src={user.image} alt="avatar" style={{ height: '180px' }} />}>
+                                                                <Meta title={user.category} description={user.price} />
+                                                            </Card>
+                                                        </Col>
+                                                    </Link>
+                                                    <Link to={`/productlist`}>
+                                                        <Col span={6}>
+                                                            <Card hoverable
+                                                                style={{ width: 300 }}
+                                                                cover={<img src={user.image} alt="avatar" style={{ height: '180px' }} />}>
+                                                                <Meta title={user.category} description={user.price} />
+                                                            </Card>
+                                                        </Col>
+                                                    </Link>
+                                                    <Link to={`/productlist`}>
+                                                        <Col span={6}>
+                                                            <Card hoverable
+                                                                style={{ width: 300 }}
+                                                                cover={<img src={user.image} alt="avatar" style={{ height: '180px' }} />}>
+                                                                <Meta title={user.category} description={user.price} />
+                                                            </Card>
+                                                        </Col>
+                                                    </Link>
+
+                                                </Row>
+                                            </h3>
+                                        </div>
+                                    </>
+                                ))}
                             </Carousel>
                         </Col>
                     </Row>
-                    <Row>
+                    <Row gutter={{
+                        xs: 8,
+                        sm: 16,
+                        md: 24,
+                        lg: 32,
+                    }} style={{ backgroundColor: '#F5F5DC', height: '405px', margin: 'auto', marginTop: '5%' }} >
                         <Col span={24}>
-                            <div style={{ backgroundColor: 'white', padding: '10px' }}><div style={{ color: '#1a1a1a', fontSize: "15px", fontWeight: 'bold' }}>Showing 1 – 40 of 15,061 results for "kurtas kurtis"</div>
-                                <Tabs
-                                    defaultActiveKey="1"
-                                    items={[
-                                        {
-                                            label: (
-                                                <span value="men's clothing" onClick={() => FillterhandleChange("men's clothing")}>
-                                                    Sortby
-                                                </span>
-                                            ),
-                                            key: '1',
-
-                                        },
-                                        {
-                                            label: (
-                                                <span value="women's clothing" onClick={() => Fillterhandle("women's clothing")}>
-                                                    Relevance
-                                                </span>
-                                            ),
-                                            key: '2',
-                                        },
-                                        {
-                                            label: (
-                                                <span value="jewelery" onClick={() => FillterPopularity("jewelery")}>
-                                                    papularity
-                                                </span>
-                                            ),
-                                            key: '3',
-                                        },
-                                        {
-                                            label: (
-                                                <span value="jewelery" onClick={() => FillterPopularity("jewelery")} >
-                                                    Price--Low to High
-                                                </span>
-                                            ),
-                                            key: '4',
-                                        },
-                                        {
-                                            label: (
-                                                <span onClick={() => SortPrice("price")}>
-                                                    Price--High to Low
-                                                </span>
-                                            ),
-                                            key: '5',
-                                        },
-                                        {
-                                            label: (
-                                                <span value="electronics" onClick={() => FillterNewest("electronics")}>
-                                                    Newest First
-                                                </span>
-                                            ),
-                                            key: '6',
-                                        },
-                                    ]}
-                                />
+                            <div >
+                                <Text type="warning"><div> <h3>Beauty Food & More</h3></div></Text>
                             </div>
                         </Col>
-                    </Row>
-                    < Content style={contentStyle} >
-                        <Row gutter={{
-                            xs: 8,
-                            sm: 16,
-                            md: 24,
-                            lg: 32,
-                        }}>
-                            <Col span={24}>
-                                <div >
-                                    <Text type="warning"><div> <h3>Best Of Electronics</h3></div></Text>
-                                </div>
-                            </Col>
-                        </Row>
-                        <Row gutter={[16, 16]}>
+                        <Col span={24} >
+                            <Carousel autoplay>
+                                {first.slice(0, 4).map((user) => (
+                                    <>
+                                        <div>
+                                            <h3 style={carouselStyle}>
+                                                <Row gutter={16} >
+                                                    <Link to={`/productlist`}>
+                                                        <Col span={6} >
+                                                            <Card hoverable
+                                                                style={{ width: 300 }}
+                                                                cover={<img src={user.image} alt="avatar" style={{ height: '180px' }} />}>
+                                                                <Meta title={user.category} description={user.price} />
+                                                            </Card>
+                                                        </Col>
+                                                    </Link>
+                                                    <Link to={`/productlist`}>
+                                                        <Col span={6}>
+                                                            <Card hoverable
+                                                                style={{ width: 300 }}
+                                                                cover={<img src={user.image} alt="avatar" style={{ height: '180px' }} />}>
+                                                                <Meta title={user.category} description={user.price} />
+                                                            </Card>
+                                                        </Col>
+                                                    </Link>
+                                                    <Link to={`/productlist`}>
+                                                        <Col span={6}>
+                                                            <Card hoverable
+                                                                style={{ width: 300 }}
+                                                                cover={<img src={user.image} alt="avatar" style={{ height: '180px' }} />}>
+                                                                <Meta title={user.category} description={user.price} />
+                                                            </Card>
+                                                        </Col>
+                                                    </Link>
+                                                    <Link to={`/productlist`}>
+                                                        <Col span={6}>
+                                                            <Card hoverable
+                                                                style={{ width: 300 }}
+                                                                cover={<img src={user.image} alt="avatar" style={{ height: '180px' }} />}>
+                                                                <Meta title={user.category} description={user.price} />
+                                                            </Card>
+                                                        </Col>
+                                                    </Link>
 
-                            {first.map((user) => (
+                                                </Row>
+                                            </h3>
+                                        </div>
+                                    </>
+                                ))}
+                            </Carousel>
+                        </Col>
+                    </Row>
+                    <Row gutter={{
+                        xs: 8,
+                        sm: 16,
+                        md: 24,
+                        lg: 32,
+                    }} style={{ backgroundColor: '#F5F5DC', height: '405px', margin: 'auto', marginTop: '5%' }}  >
+                        <Col span={24}>
+                            <div >
+                                <Text type="warning"><div> <h3>Grooming ,Books & More</h3></div></Text>
+                            </div>
+                        </Col>
+                        <Col span={24} >
+                            <Carousel autoplay>
+                                {first.slice(0, 4).map((user) => (
+                                    <>
+                                        <div>
+                                            <h3 style={carouselStyle}>
+                                                <Row gutter={16} >
+                                                    <Link to={`/productlist`}>
+                                                        <Col span={6} >
+                                                            <Card hoverable
+                                                                style={{ width: 300 }}
+                                                                cover={<img src={user.image} alt="avatar" style={{ height: '180px' }} />}>
+                                                                <Meta title={user.category} description={user.price} />
+                                                            </Card>
+                                                        </Col>
+                                                    </Link>
+                                                    <Link to={`/productlist`}>
+                                                        <Col span={6}>
+                                                            <Card hoverable
+                                                                style={{ width: 300 }}
+                                                                cover={<img src={user.image} alt="avatar" style={{ height: '180px' }} />}>
+                                                                <Meta title={user.category} description={user.price} />
+                                                            </Card>
+                                                        </Col>
+                                                    </Link>
+                                                    <Link to={`/productlist`}>
+                                                        <Col span={6}>
+                                                            <Card hoverable
+                                                                style={{ width: 300 }}
+                                                                cover={<img src={user.image} alt="avatar" style={{ height: '180px' }} />}>
+                                                                <Meta title={user.category} description={user.price} />
+                                                            </Card>
+                                                        </Col>
+                                                    </Link>
+                                                    <Link to={`/productlist`}>
+                                                        <Col span={6}>
+                                                            <Card hoverable
+                                                                style={{ width: 300 }}
+                                                                cover={<img src={user.image} alt="avatar" style={{ height: '180px' }} />}>
+                                                                <Meta title={user.category} description={user.price} />
+                                                            </Card>
+                                                        </Col>
+                                                    </Link>
+
+                                                </Row>
+                                            </h3>
+                                        </div>
+                                    </>
+                                ))}
+                            </Carousel>
+                        </Col>
+                    </Row>
+                    <Row gutter={{
+                        xs: 8,
+                        sm: 16,
+                        md: 24,
+                        lg: 32,
+                    }} style={{ backgroundColor: '#F5F5DC', height: '405px', margin: 'auto', marginTop: '5%' }}   >
+                        <Col span={24}>
+                            <div >
+                                <Text type="warning"><div> <h3>Home & Kitchen</h3></div></Text>
+                            </div>
+                        </Col>
+                        <Col span={24} >
+                            <Carousel autoplay>
+                                {first.slice(0, 4).map((user) => (
+                                    <>
+                                        <div>
+                                            <h3 style={carouselStyle}>
+                                                <Row gutter={16} >
+                                                    <Link to={`/productlist`}>
+                                                        <Col span={6} >
+                                                            <Card hoverable
+                                                                style={{ width: 300 }}
+                                                                cover={<img src={user.image} alt="avatar" style={{ height: '180px' }} />}>
+                                                                <Meta title={user.category} description={user.price} />
+                                                            </Card>
+                                                        </Col>
+                                                    </Link>
+                                                    <Link to={`/productlist`}>
+                                                        <Col span={6}>
+                                                            <Card hoverable
+                                                                style={{ width: 300 }}
+                                                                cover={<img src={user.image} alt="avatar" style={{ height: '180px' }} />}>
+                                                                <Meta title={user.category} description={user.price} />
+                                                            </Card>
+                                                        </Col>
+                                                    </Link>
+                                                    <Link to={`/productlist`}>
+                                                        <Col span={6}>
+                                                            <Card hoverable
+                                                                style={{ width: 300 }}
+                                                                cover={<img src={user.image} alt="avatar" style={{ height: '180px' }} />}>
+                                                                <Meta title={user.category} description={user.price} />
+                                                            </Card>
+                                                        </Col>
+                                                    </Link>
+                                                    <Link to={`/productlist`}>
+                                                        <Col span={6}>
+                                                            <Card hoverable
+                                                                style={{ width: 300 }}
+                                                                cover={<img src={user.image} alt="avatar" style={{ height: '180px' }} />}>
+                                                                <Meta title={user.category} description={user.price} />
+                                                            </Card>
+                                                        </Col>
+                                                    </Link>
+
+                                                </Row>
+                                            </h3>
+                                        </div>
+                                    </>
+                                ))}
+                            </Carousel>
+                        </Col>
+                    </Row>
+                    <Row gutter={{
+                        xs: 8,
+                        sm: 16,
+                        md: 24,
+                        lg: 32,
+                    }} style={{ backgroundColor: '#F5F5DC', margin: 'auto', marginTop: '5%' }}  >
+                        <Col span={24}>
+                            <div >
+                                <Text type="warning"><div> <h3>FESTIVE CRAZY OFFERS</h3></div></Text>
+                            </div>
+                        </Col>
+                        <Row gutter={[16, 16]}>
+                            {first.slice(0, 12).map((user) => (
                                 <>
-                                    <Col className="gutter-row" span={6}>
-                                        <div>{user.price}</div>
-                                        <Link to='ProductList'>
-                                            <div style={style}><Card style={{ height: '100%' }}
-                                                hoverable
-                                                cover={<img src={Photo1} alt="avatar" />}>
-                                                <Space direction="vertical">
-                                                    <Text type="danger"><div>{user.id}</div></Text>
-                                                    <Text strong type="secondary"><div>{user.title}</div></Text>
-                                                    <Text strong><div>{user.category}</div></Text>
-                                                    <Text type="warning"><div>Hot Deal</div></Text>
-                                                    <div><Text strong><div>{user.price}</div></Text><Text delete type="secondary">1,999</Text><Text type="success">55% off</Text></div>
-                                                    <div><Text strong type="secondary">Size:</Text> <Text strong > S, M, XL, XXL</Text></div>
-                                                </Space>
+                                  
+                                        <Col className="gutter-row" span={4}>
+
+                                            <div style={style}>
+                                                <Card style={{ height: '100%' }}
+                                                    hoverable
+                                                    cover=<img src={user.image} alt="avatar" style={{ height: '180px' }} />>
+                                                    {/* <Space direction="vertical">
+                                        <Text type="danger"><div>{user.id}</div></Text>
+                                        <Text strong type="secondary"><div>{user.title}</div></Text>
+                                        <Text strong><div>{user.category}</div></Text>
+                                        <Text type="warning"><div>Hot Deal</div></Text>
+                                        <div><Text strong><div>{user.price}</div></Text><Text delete type="secondary">1,999</Text><Text type="success">55% off</Text></div>
+                                        <div><Text strong type="secondary">Size:</Text> <Text strong > S, M, XL, XXL</Text></div>
+                                    </Space> */}
+                                                </Card> </div>
+                                        </Col>
+                              
+                                </>
+                            ))}
+                        </Row>
+                    </Row>
+                    <Row gutter={{
+                        xs: 8,
+                        sm: 16,
+                        md: 24,
+                        lg: 32,
+                    }} style={{ backgroundColor: '#F5F5DC', margin: 'auto', marginTop: '5%', height: '405px' }}  >
+                        <Col span={24}>
+                            <div >
+                                <Text type="warning"><div> <h3>Recenty Viewed</h3></div></Text>
+                            </div>
+                        </Col>
+                        <Row gutter={[16, 16]}>
+                            {first.slice(0, 4).map((user) => (
+                                <>
+                                  <Link to={`/productlist`}>
+                                        <Col className="gutter-row" span={6}>
+                                            <Card hoverable
+                                                style={{ width: 308 }}
+                                                cover={<img src={user.image} alt="avatar" style={{ height: '180px' }} />}>
+                                                <Meta title={user.category} description={user.price} />
                                             </Card>
-                                            </div></Link>
-                                    </Col>
+                                        </Col>
+                                    </Link>
                                 </>
                             ))}
                         </Row>
-                        <Row gutter={{
-                            xs: 8,
-                            sm: 16,
-                            md: 24,
-                            lg: 32,
-                        }}>
-                            <Col span={24}>
-                                <div >
-                                    <Text type="warning"><div> <h3>TVs & Appliances</h3></div></Text>
-                                </div>
-                            </Col>
-                        </Row>
-                        <Row gutter={[16, 16]}>
-                            {first.map((user) => (
-                                <>
-                                    <Col className="gutter-row" span={6}>
-                                        <div>{user.price}</div>
-                                        <div style={style}><Card style={{ height: '100%' }}
-                                            hoverable
-                                            cover={<img src={Photo2} alt="avatar" />}>
-                                            <Space direction="vertical">
-                                                <Text type="danger"><div>{user.id}</div></Text>
-                                                <Text strong type="secondary"><div>{user.title}</div></Text>
-                                                <Text strong><div>{user.category}</div></Text>
-                                                <Text type="warning"><div>Hot Deal</div></Text>
-                                                <div><Text strong><div>{user.price}</div></Text><Text delete type="secondary">1,999</Text><Text type="success">55% off</Text></div>
-                                                <div><Text strong type="secondary">Size:</Text> <Text strong > S, M, XL, XXL</Text></div>
-                                            </Space>
-                                        </Card> </div>
-                                    </Col>
-                                </>
-                            ))}
-                        </Row>
-                        <Row gutter={{
-                            xs: 8,
-                            sm: 16,
-                            md: 24,
-                            lg: 32,
-                        }}>
-                            <Col span={24}>
-                                <div >
-                                    <Text type="warning"><div> <h3>Sports & Books</h3></div></Text>
-                                </div>
-                            </Col>
-                        </Row>
-                        <Row gutter={[16, 16]}>
-                            {first.map((user) => (
-                                <>
-                                    <Col className="gutter-row" span={6}>
-                                        <div>{user.price}</div>
-                                        <div style={style}><Card style={{ height: '100%' }}
-                                            hoverable
-                                            cover={<img src={Photo2} alt="avatar" />}>
-                                            <Space direction="vertical">
-                                                <Text type="danger"><div>{user.id}</div></Text>
-                                                <Text strong type="secondary"><div>{user.title}</div></Text>
-                                                <Text strong><div>{user.category}</div></Text>
-                                                <Text type="warning"><div>Hot Deal</div></Text>
-                                                <div><Text strong><div>{user.price}</div></Text><Text delete type="secondary">1,999</Text><Text type="success">55% off</Text></div>
-                                                <div><Text strong type="secondary">Size:</Text> <Text strong > S, M, XL, XXL</Text></div>
-                                            </Space>
-                                        </Card> </div>
-                                    </Col>
-                                </>
-                            ))}
-                        </Row>
-                        <Row gutter={{
-                            xs: 8,
-                            sm: 16,
-                            md: 24,
-                            lg: 32,
-                        }}>
-                            <Col span={24}>
-                                <div >
-                                    <Text type="warning"><div> <h3>Home & Funiture</h3></div></Text>
-                                </div>
-                            </Col>
-                        </Row>
-                        <Row gutter={[16, 16]}>
-                            {first.map((user) => (
-                                <>
-                                    <Col className="gutter-row" span={6}>
-                                        <div>{user.price}</div>
-                                        <div style={style}><Card style={{ height: '100%' }}
-                                            hoverable
-                                            cover={<img src={Photo1} alt="avatar" />}>
-                                            <Space direction="vertical">
-                                                <Text type="danger"><div>{user.id}</div></Text>
-                                                <Text strong type="secondary"><div>{user.title}</div></Text>
-                                                <Text strong><div>{user.category}</div></Text>
-                                                <Text type="warning"><div>Hot Deal</div></Text>
-                                                <div><Text strong><div>{user.price}</div></Text><Text delete type="secondary">1,999</Text><Text type="success">55% off</Text></div>
-                                                <div><Text strong type="secondary">Size:</Text> <Text strong > S, M, XL, XXL</Text></div>
-                                            </Space>
-                                        </Card> </div>
-                                    </Col>
-                                </>
-                            ))}
-                        </Row>
-                    </Content>
-                </Layout>
+                    </Row>
+                </Content>
             </Layout>
-      
+        </Layout >
+
     )
 }
 export default Home;
