@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Checkbox, Form, Input } from 'antd';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
+import axios from 'axios';
 const onFinish = (values) => {
   console.log('Success:', values);
 };
@@ -9,7 +10,46 @@ const onFinishFailed = (errorInfo) => {
 };
 
 
+
 function Login() {
+
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
+  const navigate = useNavigate();
+  
+  const [error, setError] = useState('');
+  
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  
+    try {
+      const response = await axios.post("http://localhost:8000/api/login", formData); // Replace with your backend API endpoint
+      const { status, token } = response.data;
+  
+      if (status === 'success') {
+        // Login successful; store the token securely (e.g., in local storage or cookies)
+        localStorage.setItem('token', token); // Store the token in local storage
+        navigate("/");
+      } else {
+        // Handle login failure and show an error message to the user
+        setError('Invalid credentials');
+      }
+    } catch (error) {
+      // Handle HTTP request error (e.g., network error)
+      console.error('Login failed:', error);
+    }
+  };
+  
 
   return (
     <Form
@@ -49,16 +89,16 @@ function Login() {
     
    </Form.Item>
     <Form.Item
-      label="Username"
-      name="username"
+      label="Email"
+      name="email"
       rules={[
         {
           required: true,
-          message: 'Please input your username!',
+          message: 'Please input your email!',
         },
       ]}
     >
-      <Input />
+      <Input name="email" onChange={handleChange} />
     </Form.Item>
 
  
@@ -73,7 +113,7 @@ function Login() {
         },
       ]}
     >
-      <Input.Password />
+     <Input.Password name="password" onChange={handleChange} />
     </Form.Item>
 
     <Form.Item
@@ -104,10 +144,15 @@ function Login() {
         span: 16,
       }}
     >
-      <Button type="primary" htmlType="submit">
+      <Button type="primary" htmlType="submit" onClick={handleSubmit}>
         Login
       </Button>
     </Form.Item>
+    
+    {error && <p style={{ color: 'red' }}>{error}</p>}
+
+
+
   </Form>
   )
 }

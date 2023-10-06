@@ -14,9 +14,9 @@ export const selectedProducts = (product)=>{
     };
 }
 
-export const addToCart = (products) => {
+export const addToCart = (product) => {
     return {
       type: ActionTypes.CART_PRODUCTS,
-      payload: products
+      payload: product
     };
   }

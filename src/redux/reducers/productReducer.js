@@ -16,7 +16,7 @@ export const productReducer =(state=initialState,{type, payload})=>{
     }
 }
 
-export const selectedProductReducer =(state={},{type, payload})=>{
+export const selectedProductReducer =(state=[],{type, payload})=>{
     switch(type)
     {
         case ActionTypes.SELECTED_PRODUCT:
@@ -27,11 +27,16 @@ export const selectedProductReducer =(state={},{type, payload})=>{
     }
 }
 
-export const cartProductsReducer = (state={},{type, payload}) => {
+export const cartProductsReducer = (state=initialState,{type, payload}) => {
+    console.log("WWW",payload);
     switch (type) {
       case ActionTypes.CART_PRODUCTS:
         // Add the product to the cart
-         return {...state, products:payload};
+        //  return {...state, products:payload};
+        return {
+            ...state,
+            products: [...state.products, payload], // Append the new product to the array
+          };
   
       default:
         return state;
