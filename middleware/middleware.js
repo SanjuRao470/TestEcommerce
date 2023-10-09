@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const userModal = require("../modal/userSchema"); // Import your User model
+const userModal = require("../model/userSchema"); // Import your User model
 
 const verifyToken = async (req, res, next) => {
   const token = req.headers.authorization?.split(" ")[1]; // Extract the token from the "Authorization" header

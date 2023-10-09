@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 dotenv.config();
 const userRoutes=require('./routes/userRoutes')
+const productRouter=require('./routes/productRoutes')
 const PORT = process.env.PORT || 3001;
 const url = process.env.DB_URL;
 
@@ -33,7 +34,8 @@ function dbConfig() {
     });
 }
 function routeConfig() {
-    app.use('/api',userRoutes)
+    app.use('/user',userRoutes);
+    app.use('/product',productRouter)
     
 }
 function bodyConfig() {}
